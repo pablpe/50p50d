@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Eperimentos</title>
+</head>
+
+<body>
+    <div class="imagen-menu-desplegable"></div>
+    <div class="menu-desplegable">
+        <a href="#coloresComplementarios">Colores complementarios</a>
+        <a href="#hoverRadial">Radial hover</a>
+        <a href="#transiciones">Transitions</a>
+        <a href="#animaciones">Animations</a>
+        <a href="#expandingCards">Expanding cards</a>
+        <a href="#progressSteps">Progress Steps</a>
+        <a href="#rotatingNavigation">Rotating navigation</a>
+        <a href="#hiddenSearch">Hidden search widget</a>
+        <a href="#loadingImg">Loading image</a>
+        <a href="#scrollAnimations">Scroll animations</a>
+        <a href="#hiddenSections">Hidden Sections</a>
+        <a href="#waveForm">Wave Form</a>
+        <a href="#dadJokes">Dad jokes</a>
+        <a href="#eventKeyCodes">Event KeyCodes</a>
+        <a href="#FAQs">FAQs</a>
+        <a href="#randomChoicePicker">Random choice picker</a>
+        <a href="#drinkWater">Drink Water</a>
+        <a href="#animatedNavigation">Animated Navigation</a>
+        <a href="#liveClock">Clock</a>
+        <a href="#buttonRipple">Button Ripple Effect</a>
+        <a href="#dragNDrop">Drag and drop</a>
+    </div>
+    <div id="titulo">Cosas</div>
+    <!-- <nav id="menuInicio">
+        <a href="#coloresComplementarios">Colores complementarios</a>
+        <a href="#hoverRadial">Hover radial</a>
+        <a href="#transiciones">Transiciones</a>
+        <a href="#animaciones">Animaciones</a>
+    </nav> -->
+    <div id="coloresComplementarios" class="seccion">
+        <div class="nombre-seccion">Colores complementarios</div>
+        <div class="contenido-seccion seccion-coloresComplementarios">
+            <div class="mostrar-colores"></div>
+            <input type="color" class="controles-colores" id="pickerComplementarios">
+            <div id="numeroColores"></div>
+        </div>
+    </div>
+    <div id="hoverRadial" class="seccion">
+        <div class="nombre-seccion">Radial hover</div>
+        <div class="contenido-seccion">
+            <div class="seccion-hoverRadial">
+                <div class="elemento-hover-radial"></div>
+                <div class="elemento-hover-radial"></div>
+                <div class="elemento-hover-radial"></div>
+                <div class="elemento-hover-radial"></div>
+                <div class="elemento-hover-radial"></div>
+                <div class="elemento-hover-radial"></div>
+            </div>
+        </div>
+    </div>
+    <div id="transiciones" class="seccion">
+        <div class="nombre-seccion">Transitions</div>
+        <div class="contenido-seccion">
+            <button id="botonTransicion"> click here </button>
+            <div class="elementoTransicion">
+
+            </div>
+        </div>
+    </div>
+    <div id="animaciones" class="seccion">
+        <div class="nombre-seccion">Animations</div>
+        <div class="contenido-seccion">
+            <!-- <div id="contenedorPicolo"><img id="piccolo" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/84dc13b7-a2e7-4b45-83ec-311e72e82900/dbthg0u-97eb11ed-f5fc-48f3-8af1-9a964b99f5ef.png/v1/fill/w_256,h_256/piccolo_render__budokai_tenkaichi_3__by_maxiuchiha22_dbthg0u-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjU2IiwicGF0aCI6IlwvZlwvODRkYzEzYjctYTJlNy00YjQ1LTgzZWMtMzExZTcyZTgyOTAwXC9kYnRoZzB1LTk3ZWIxMWVkLWY1ZmMtNDhmMy04YWYxLTlhOTY0Yjk5ZjVlZi5wbmciLCJ3aWR0aCI6Ijw9MjU2In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.dfFdX8KP9jaryBmA79asuOuiXTaWGW_T-kxkEWHkuMI" alt=""></div> -->
+            <div id="contenedorPicolo">
+                <div id="piccolo">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/84dc13b7-a2e7-4b45-83ec-311e72e82900/dbthg0u-97eb11ed-f5fc-48f3-8af1-9a964b99f5ef.png/v1/fill/w_256,h_256/piccolo_render__budokai_tenkaichi_3__by_maxiuchiha22_dbthg0u-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjU2IiwicGF0aCI6IlwvZlwvODRkYzEzYjctYTJlNy00YjQ1LTgzZWMtMzExZTcyZTgyOTAwXC9kYnRoZzB1LTk3ZWIxMWVkLWY1ZmMtNDhmMy04YWYxLTlhOTY0Yjk5ZjVlZi5wbmciLCJ3aWR0aCI6Ijw9MjU2In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.dfFdX8KP9jaryBmA79asuOuiXTaWGW_T-kxkEWHkuMI"
+                        alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="expandingCards" class="seccion">
+        <div class="nombre-seccion">Expanding cards</div>
+        <div class="contenido-seccion">
+            <div class="imgExp" id="imEx1"
+                style="background: url(https://static.vecteezy.com/system/resources/previews/004/629/379/original/cozy-room-with-city-landscape-from-window-illustration-free-vector.jpg)">
+                <h3>Foto 1</h3>
+            </div>
+            <div class="imgExp" id="imEx2"
+                style="background: url(https://media.istockphoto.com/id/465713536/vector/sunset-cityscape-vector-illustration.jpg?s=612x612&w=0&k=20&c=oCkGW-jqXmcueJTrJUROfwdnGjRjy6crs0XXpNRm9ek=)">
+                <h3>Foto 2</h3>
+            </div>
+            <div class="imgExp" id="imEx3"
+                style="background: url(https://media.istockphoto.com/id/465711200/vector/night-cityscape.jpg?s=612x612&w=0&k=20&c=feQNc8k5s2wthVp-soSxD_n38cdI9UdHzFBU9vT7-EY=)">
+                <h3>Foto 3</h3>
+            </div>
+            <div class="imgExp" id="imEx4"
+                style="background: url(https://img.freepik.com/premium-photo/cityscape-modern-city-night-flat-illustration_410516-25801.jpg)">
+                <h3>Foto 4</h3>
+            </div>
+            <div class="imgExp" id="imEx5"
+                style="background: url(https://media.istockphoto.com/id/513641330/vector/urban-landscape-flat-city.jpg?s=612x612&w=0&k=20&c=KbmL8ixlmhS5mnVhVZXiz1jb4zeJUmGvhxmQGcHbzcg=)">
+                <h3>Foto 5</h3>
+            </div>
+        </div>
+    </div>
+    <div id="progressSteps" class="seccion">
+        <div class="nombre-seccion">Progress steps</div>
+        <div class="contenido-seccion">
+            <div class="progreso">
+                <div class="barraProgreso1"></div>
+                <div class="barraProgreso2"></div>
+                <div class="paso activo">1</div>
+                <div class="paso">2</div>
+                <div class="paso">3</div>
+                <div class="paso">4</div>
+                <div class="paso">5</div>
+                <div class="paso">6</div>
+                <div class="paso">7</div>
+                <div class="paso">8</div>
+            </div>
+            <div class="botonesProgreso">
+                <button id="btnRetroceder" disabled>Prev</button>
+                <button id="btnAvanzar">Next</button>
+            </div>
+        </div>
+    </div>
+    <div id="rotatingNavigation" class="seccion">
+        <div class="nombre-seccion">Rotating navigation</div>
+        <div class="contenido-seccion">
+            <div class="fondo2"></div>
+            <div class="fondo1">
+                <h1>La higuana</h1>
+                <p>
+                    Las iguanas son fascinantes reptiles que pertenecen a la familia Iguanidae y se encuentran
+                    ampliamente distribuidas en diversas regiones del mundo, principalmente en América Central, América
+                    del Sur, el Caribe y algunas islas del Pacífico. Estos extraordinarios animales han capturado la
+                    atención de científicos, entusiastas de la naturaleza y aficionados a los reptiles debido a sus
+                    interesantes características y comportamientos únicos.
+                </p>
+
+                <p>
+                    Una de las características más distintivas de las iguanas es su aspecto físico. Su cuerpo está
+                    cubierto por escamas y, en muchos casos, presentan una cresta dorsal y una papada colgante en el
+                    cuello. Su coloración puede variar según la especie, desde tonos verdes y marrones hasta amarillos y
+                    naranjas vibrantes. Esta variabilidad en su apariencia ha contribuido a su popularidad en el
+                    comercio de mascotas, lo que lamentablemente ha llevado a la disminución de algunas poblaciones
+                    silvestres.
+                </p>
+                <img src="https://images5.alphacoders.com/792/thumb-1920-792304.jpg" alt="">
+            </div>
+            <div class="contenedorCiruclo">
+                <div class="circuloMenu">
+                    <div id="logo1"><i class="fa-solid fa-xmark"></i></div>
+                    <div id="logo2"><i class="fa-solid fa-bars"></i></div>
+                </div>
+            </div>
+            <div class="menuEscondido esconderMenu">
+                <div>El ornitorrinco</div>
+                <div>El lémur</div>
+                <div>El armadillo</div>
+            </div>
+        </div>
+    </div>
+    <div id="hiddenSearch" class="seccion">
+        <div class="nombre-seccion">Hidden search widget</div>
+        <div class="contenido-seccion">
+            <input type="text" class="searchWidget searchWidgetEscondido" placeholder="Search...">
+            <button id="botonHiddenSearch"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+    </div>
+    <div id="loadingImg" class="seccion">
+        <div class="nombre-seccion">Loading image</div>
+        <div class="contenido-seccion">
+            <div class="bgImg"></div>
+            <div id="textoImg">0%</div>
+            <button id="recargaImg"><i class="fa-solid fa-rotate-right"></i></button>
+        </div>
+    </div>
+    <div id="scrollAnimations" class="seccion">
+        <div class="nombre-seccion">Scroll animations</div>
+        <div class="contenido-seccion" id="contenidoScrollAnimations">
+            <div class="contenidoScroll">Content</div>
+            <div class="contenidoScroll">Content</div>
+            <div class="contenidoScroll">Content</div>
+            <div class="contenidoScroll">Content</div>
+            <div class="contenidoScroll">Content</div>
+            <div class="contenidoScroll">Content</div>
+            <div class="contenidoScroll">Content</div>
+            <div class="contenidoScroll">Content</div>
+            <div class="contenidoScroll">Content</div>
+            <div class="contenidoScroll">Content</div>
+            <div class="contenidoScroll">Content</div>
+            <div class="contenidoScroll">Content</div>
+        </div>
+    </div>
+    <div id="hiddenSections" class="seccion">
+        <div class="nombre-seccion">Hidden sections</div>
+        <div class="contenido-seccion">
+            <div id="botonesHidden">
+                <div class="botonHidden botonSeleccionado" style="background-color: orange;" data-id="0">Boton 1</div>
+                <div class="botonHidden" style="background-color: rgb(147, 147, 250);" data-id="1">Boton 2</div>
+                <div class="botonHidden" style="background-color: rgb(201, 239, 79);" data-id="2">Boton 3</div>
+                <div class="botonHidden" style="background-color: rgb(214, 91, 244);" data-id="3">Boton 4</div>
+            </div>
+            <div id="textosHidden">
+                <p data-id="0" class="textoSeleccionado">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Ut auctor
+                    scelerisque risus,
+                    nec tincidunt magna tincidunt vel. Nam in varius quam, a euismod ex. Nulla facilisi. Fusce feugiat
+                    massa ac arcu varius, eget facilisis turpis blandit. In bibendum bibendum urna a venenatis. Sed ut
+                    lacus ut odio faucibus elementum. Curabitur a mi quis elit posuere fringilla vel eu mi. Vestibulum
+                    dapibus, quam ac bibendum fringilla, mauris odio viverra nulla, a scelerisque enim sem sit amet
+                    tellus. Aliquam eleifend, eros nec venenatis venenatis, nulla justo ullamcorper sem, in elementum
+                    felis ipsum quis quam. Quisque euismod id eros vel consectetur.
+                </p>
+
+                <p data-id="1">
+                    Nunc nec lectus elit. Nulla non mi justo. Curabitur non justo nisl. Aenean sit amet urna at erat
+                    pharetra scelerisque. Ut auctor accumsan odio, a facilisis neque posuere ac. Suspendisse interdum
+                    nibh
+                    vel odio scelerisque facilisis. Maecenas ultrices felis non quam rhoncus lacinia. In eu odio at
+                    metus
+                    suscipit feugiat vitae eget nulla. Ut dapibus risus vel turpis congue, et egestas metus fermentum.
+                    Vivamus et dui eu lacus vehicula posuere nec vel quam.
+                </p>
+
+                <p data-id="2">
+                    Quisque luctus tortor nec quam tempus, ac tincidunt ligula blandit. Nulla facilisi. Sed scelerisque
+                    interdum justo. Sed ultricies, arcu vel facilisis interdum, ex ligula volutpat urna, vitae tempus
+                    augue
+                    quam eget magna. Nulla facilisi. Duis ut fermentum quam. Nullam vel neque ut mauris congue viverra
+                    vel
+                    vitae tellus. Vestibulum eget tincidunt nisi. Nam eu dolor eget mauris luctus tristique. Nam id enim
+                    vel
+                    urna sollicitudin hendrerit in vitae odio. Nullam tincidunt, risus ac ultricies viverra, dui mauris
+                    convallis lacus, at volutpat enim tellus sit amet ipsum.
+                </p>
+
+                <p data-id="3">
+                    Integer id fermentum justo. Pellentesque in lectus nec arcu efficitur ultricies. Sed quis ligula
+                    facilisis, suscipit velit et, sollicitudin quam. Nam vel dolor ut arcu viverra aliquam. Nulla
+                    rhoncus
+                    ultricies turpis sit amet laoreet. Curabitur nec posuere turpis. Duis ac facilisis purus. Donec ut
+                    arcu
+                    sit amet odio facilisis volutpat. Proin iaculis, dolor nec vehicula tincidunt, odio quam cursus ex,
+                    non
+                    dignissim lectus quam id tellus. Fusce et est id dui aliquam tincidunt. Vivamus nec luctus nibh.
+                    Etiam
+                    non facilisis nulla. Aenean vel risus sit amet sapien fermentum suscipit non quis purus.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="waveForm" class="seccion">
+        <div class="nombre-seccion">Wave Form</div>
+        <div class="contenido-seccion">
+            <div id="formLogin">
+                <h1>Please login</h1>
+                <div class="inpYNombre">
+                    <input type="text">
+                    <div class="tituloInput">Email</div>
+                </div>
+                <div class="inpYNombre">
+                    <input type="password">
+                    <div class="tituloInput">Password</div>
+                </div>
+                <div class="terms">Don't have account?<a href="">Register</a></div>
+            </div>
+        </div>
+    </div>
+    <div id="dadJokes" class="seccion">
+        <div class="nombre-seccion">Dad jokes</div>
+        <div class="contenido-seccion">
+            <div id="contenedorJokes">
+                <div id="fraseSupJokes">Don't laugh challenge</div>
+                <div id="fraseAct">Frase</div>
+                <button class="newJoke">Get another joke</button>
+            </div>
+        </div>
+    </div>
+    <div id="eventKeyCodes" class="seccion">
+        <div class="nombre-seccion">Event KeyCodes</div>
+        <div class="contenido-seccion">
+            <div id="contenedorKeys">
+                <div id="key">
+                    event.key
+                    <div class="infoKey"></div>
+                </div>
+                <div id="keyCode">
+                    event.keyCode
+                    <div class="infoKey"></div>
+                </div>
+                <div id="code">
+                    event.code
+                    <div class="infoKey"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="FAQs" class="seccion">
+        <div class="nombre-seccion">FAQs</div>
+        <div class="contenido-seccion">
+            <div class="FAQ">
+                <button class="botonFAQ"><i class="fa-regular fa-lightbulb" style="color: #246ef0;"></i></button>
+                <div class="preguntaFAQ">Pregunta de ejemplo</div>
+                <div class="respuestaFAQ">Integer id fermentum justo. Pellentesque in lectus nec arcu efficitur
+                    ultricies. Sed quis ligula
+                    facilisis, suscipit velit et, sollicitudin quam. Nam vel dolor ut arcu viverra aliquam. Nulla
+                    rhoncus
+                    ultricies turpis sit amet laoreet. Curabitur nec posuere turpis. Duis ac facilisis purus. Donec ut
+                </div>
+            </div>
+            <div class="FAQ">
+                <button class="botonFAQ"><i class="fa-regular fa-lightbulb" style="color: #246ef0;"></i></button>
+                <div class="preguntaFAQ">Pregunta de ejemplo</div>
+                <div class="respuestaFAQ">Integer id fermentum justo. Pellentesque in lectus nec arcu efficitur
+                    ultricies. Sed quis ligula
+                    facilisis, suscipit velit et, sollicitudin quam. Nam vel dolor ut arcu viverra aliquam. Nulla
+                    rhoncus
+                    ultricies turpis sit amet laoreet. Curabitur nec posuere turpis. Duis ac facilisis purus. Donec ut
+                </div>
+            </div>
+            <div class="FAQ">
+                <button class="botonFAQ"><i class="fa-regular fa-lightbulb" style="color: #246ef0;"></i></button>
+                <div class="preguntaFAQ">Pregunta de ejemplo</div>
+                <div class="respuestaFAQ">Integer id fermentum justo. Pellentesque in lectus nec arcu efficitur
+                    ultricies. Sed quis ligula
+                    facilisis, suscipit velit et, sollicitudin quam. Nam vel dolor ut arcu viverra aliquam. Nulla
+                    rhoncus
+                    ultricies turpis sit amet laoreet. Curabitur nec posuere turpis. Duis ac facilisis purus. Donec ut
+                </div>
+            </div>
+            <div class="FAQ">
+                <button class="botonFAQ"><i class="fa-regular fa-lightbulb" style="color: #246ef0;"></i></button>
+                <div class="preguntaFAQ">Pregunta de ejemplo</div>
+                <div class="respuestaFAQ">Integer id fermentum justo. Pellentesque in lectus nec arcu efficitur
+                    ultricies. Sed quis ligula
+                    facilisis, suscipit velit et, sollicitudin quam. Nam vel dolor ut arcu viverra aliquam. Nulla
+                    rhoncus
+                    ultricies turpis sit amet laoreet. Curabitur nec posuere turpis. Duis ac facilisis purus. Donec ut
+                </div>
+            </div>
+            <div class="FAQ">
+                <button class="botonFAQ"><i class="fa-regular fa-lightbulb" style="color: #246ef0;"></i></button>
+                <div class="preguntaFAQ">Pregunta de ejemplo</div>
+                <div class="respuestaFAQ">Integer id fermentum justo. Pellentesque in lectus nec arcu efficitur
+                    ultricies. Sed quis ligula
+                    facilisis, suscipit velit et, sollicitudin quam. Nam vel dolor ut arcu viverra aliquam. Nulla
+                    rhoncus
+                    ultricies turpis sit amet laoreet. Curabitur nec posuere turpis. Duis ac facilisis purus. Donec ut
+                </div>
+            </div>
+            <div class="FAQ">
+                <button class="botonFAQ"><i class="fa-regular fa-lightbulb" style="color: #246ef0;"></i></button>
+                <div class="preguntaFAQ">Pregunta de ejemplo</div>
+                <div class="respuestaFAQ">Integer id fermentum justo. Pellentesque in lectus nec arcu efficitur
+                    ultricies. Sed quis ligula
+                    facilisis, suscipit velit et, sollicitudin quam. Nam vel dolor ut arcu viverra aliquam. Nulla
+                    rhoncus
+                    ultricies turpis sit amet laoreet. Curabitur nec posuere turpis. Duis ac facilisis purus. Donec ut
+                </div>
+            </div>
+            <div class="FAQ">
+                <button class="botonFAQ"><i class="fa-regular fa-lightbulb" style="color: #246ef0;"></i></button>
+                <div class="preguntaFAQ">Pregunta de ejemplo</div>
+                <div class="respuestaFAQ">Integer id fermentum justo. Pellentesque in lectus nec arcu efficitur
+                    ultricies. Sed quis ligula
+                    facilisis, suscipit velit et, sollicitudin quam. Nam vel dolor ut arcu viverra aliquam. Nulla
+                    rhoncus
+                    ultricies turpis sit amet laoreet. Curabitur nec posuere turpis. Duis ac facilisis purus. Donec ut
+                </div>
+            </div>
+            <div class="FAQ">
+                <button class="botonFAQ"><i class="fa-regular fa-lightbulb" style="color: #246ef0;"></i></button>
+                <div class="preguntaFAQ">Pregunta de ejemplo</div>
+                <div class="respuestaFAQ">Integer id fermentum justo. Pellentesque in lectus nec arcu efficitur
+                    ultricies. Sed quis ligula
+                    facilisis, suscipit velit et, sollicitudin quam. Nam vel dolor ut arcu viverra aliquam. Nulla
+                    rhoncus
+                    ultricies turpis sit amet laoreet. Curabitur nec posuere turpis. Duis ac facilisis purus. Donec ut
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="randomChoicePicker" class="seccion">
+        <div class="nombre-seccion">Random choice picker</div>
+        <div class="contenido-seccion">
+            <p>Introduce todos los elementos que quieras separados por " , " y presiona la tecla enter</p>
+            <input type="text" id="inputOpciones" placeholder="Escribe aqui...">
+            <div id="contenedorOpciones"></div>
+        </div>
+    </div>
+    <div id="drinkWater" class="seccion">
+        <div class="nombre-seccion">Drink Water</div>
+        <div class="contenido-seccion">
+            <h1>Drink Water</h1>
+            <h2>Goal: 2 Liters</h2>
+            <div id="vasoGrande">
+                <div id="parteVacia">
+                </div>
+                <div id="parteLlena">
+
+                </div>
+            </div>
+            <h2>Select how many glasses of water that you have drank</h2>
+            <div id="vasos">
+                <div class="vasoPeq">
+                    <div class="txtVasoPQ">250 ml</div>
+                    <div class="aguaVPeq"></div>
+                </div>
+                <div class="vasoPeq">
+                    <div class="txtVasoPQ">250 ml</div>
+                    <div class="aguaVPeq"></div>
+                </div>
+                <div class="vasoPeq">
+                    <div class="txtVasoPQ">250 ml</div>
+                    <div class="aguaVPeq"></div>
+                </div>
+                <div class="vasoPeq">
+                    <div class="txtVasoPQ">250 ml</div>
+                    <div class="aguaVPeq"></div>
+                </div>
+                <div class="vasoPeq">
+                    <div class="txtVasoPQ">250 ml</div>
+                    <div class="aguaVPeq"></div>
+                </div>
+                <div class="vasoPeq">
+                    <div class="txtVasoPQ">250 ml</div>
+                    <div class="aguaVPeq"></div>
+                </div>
+                <div class="vasoPeq">
+                    <div class="txtVasoPQ">250 ml</div>
+                    <div class="aguaVPeq"></div>
+                </div>
+                <div class="vasoPeq">
+                    <div class="txtVasoPQ">250 ml</div>
+                    <div class="aguaVPeq"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="animatedNavigation" class="seccion">
+        <div class="nombre-seccion">Animated Navigation</div>
+        <div class="contenido-seccion">
+            <div id="elmsMenu" class="botonMPulsadoElm">
+                <span>Home</span>
+                <span>Works</span>
+                <span>About</span>
+                <span>Contact</span>
+            </div>
+            <div id="botonMenu" class="botonMPulsado">
+                <div class="lineaCruzMenu" id="linea1"></div>
+                <div class="lineaCruzMenu" id="linea2"></div>
+            </div>
+        </div>
+    </div>
+    <div id="liveClock" class="seccion">
+        <div class="nombre-seccion">Clock</div>
+        <div class="contenido-seccion">
+            <i class="fa-solid fa-lightbulb" id="lightBulb"></i>
+            <div id="clock">
+                <div id="circuloAgujas">
+                    <div id="circuloRojoA"></div>
+                </div>
+                <div id="agujaH" class="aguja"></div>
+                <div id="agujaM" class="aguja"></div>
+                <div id="agujaS" class="aguja"></div>
+            </div>
+            <h1 id="hora">5:00 PM</h1>
+            <h2 id="fecha">MONDAY, NOV 2</h2>
+
+        </div>
+    </div>
+    <div id="buttonRipple" class="seccion">
+        <div class="nombre-seccion">Button Ripple Effect</div>
+        <div class="contenido-seccion">
+            <div id="botonRipple">Click</div>
+        </div>
+    </div>
+    <div id="dragNDrop" class="seccion">
+        <div class="nombre-seccion">Drag and drop</div>
+        <div class="contenido-seccion">
+            <div id="draggable"></div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>

@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap'); 
+
+*{
+    font-family: Poppins;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    top: 30%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(84, 61, 153);
+    position: absolute;
+}
+body > *{
+    position: relative;
+    display: inline;
+    margin: 0 auto;
+}
+input{
+    margin: 2rem auto;
+    width: 20rem;
+    height: 5rem;
+    border-radius: 15px;
+    background-color: rgb(117, 85, 215);
+    backdrop-filter: blur(10px);
+    font-size: 1.2rem;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+}
+input::placeholder{
+    color: white;
+}
+input:focus{
+    outline: none;
+}
+.card{
+    background-color: rgb(117, 85, 215);
+    border-radius: 10px;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    color: white;
+    margin-bottom: 5rem;
+}
+.user-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card img{
+    border-radius: 50%;
+    border: solid 4px rgb(65, 47, 121);
+    width: 10rem;
+    height: 10rem;
+}
+.card h2{
+    color: white;
+}
+ul {
+    text-align: left;
+    list-style-type: none; /* Elimina el marcador de lista */
+    padding: 0; /* Elimina el relleno de la lista */
+    display: flex; /* Muestra los elementos en línea */
+}
+
+li {
+    margin-right: 10px; /* Espacio entre los elementos (opcional) */
+}
+p {
+    width: 700px;
+    overflow-wrap: break-word; /* Permite el salto de línea sin modificar el tamaño del contenedor */
+  }
+.card a{
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    background-color: rgb(84, 61, 153);
+    padding: 0.5rem;
+}
+.card h2 a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border-radius: 4px;
+    background-color: rgb(117, 85, 215);
+    padding: 0.5rem;
+}

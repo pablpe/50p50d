@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap'); 
+
+*{
+    font-family: Poppins;
+    text-align: center;
+}
+body{
+    background-image: linear-gradient(to right, steelblue, rgb(35, 37, 44));
+    height: 100vh;
+    width: 100vw;
+}
+#container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 30%;
+    margin: auto auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgba(94, 94, 94, 0.288);
+    backdrop-filter: blur(15px);
+    color: white;
+    border-radius: 10px;
+    border: solid rgba(0, 0, 139, 0.604);
+    padding: 2rem;
+}
+#container > *{
+    width: 80%;
+}
+#text{
+    display: flex;
+    align-items: center;
+}
+#text input{
+    flex: 1;
+}
+#copiar{
+    height: 100%;
+    width: 10%;
+    background-color: steelblue;
+}
+.atrib{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aquamarine;
+    border: solid 2px rgb(104, 249, 201);
+}
+button:hover, #copiar{
+    cursor: pointer;
+}
+input:focus{
+    outline: none;
+}

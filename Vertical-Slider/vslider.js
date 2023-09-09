@@ -8,9 +8,6 @@ let size = arrtitulos.length;
 let arrDown = document.getElementById("arrDown");
 let arrUp = document.getElementById("arrUp");
 
-arrfotos.forEach((foto)=>{
-    foto.style.transform = `translateY(${(size-1) * -100}%)`;
-});
 
 let index = 0;
 
@@ -32,7 +29,7 @@ arrUp.addEventListener("click", () => {
   updateTransforms();
 });
 
-// Función para actualizar las transformaciones de los elementos
+
 function updateTransforms() {
   arrtitulos.forEach((titulo) => {
     titulo.style.transform = `translateY(${(size - 1 - index) * -100}%)`;
@@ -42,7 +39,7 @@ function updateTransforms() {
   });
 }
 
-// Llamada inicial para establecer las transformaciones en la carga de la página
+
 updateTransforms();
 
 

@@ -1,0 +1,31 @@
+
+body{
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+body::-webkit-scrollbar{
+    width: 0;
+}
+#container{
+    width: 20vw;
+    height: 50vh;
+    background-color: rgba(128, 128, 128, 0.091);
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.cuadradito{
+    width: 12px;
+    height: 12px;
+    background-color: rgba(128, 128, 128, 0.346);
+    box-sizing: border-box;
+    margin: 2.5px;
+}

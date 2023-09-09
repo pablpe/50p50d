@@ -1,0 +1,62 @@
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap'); 
+
+*{
+    font-family: Roboto;
+    scroll-behavior: smooth;
+    margin: 0;
+}
+/* Evitar la selección de texto y arrastrar */
+.no-select {
+    user-select: none; /* Evitar la selección de texto en la mayoría de los navegadores */
+    touch-action: none; /* Evitar el arrastre en dispositivos táctiles */
+  }
+  
+body{
+    display: flex;
+}
+#titulos{
+    height: 100vh;
+    width: 30vw;
+    overflow: hidden;
+}
+#titulos > *{
+    height: 100vh;
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.7s;
+}
+#fotos{
+    height: 100vh;
+    width: 70vw;
+    overflow: auto;
+}
+#fotos > *{
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 70vw;
+    transition: all 0.7s;
+}
+#iconos{
+    position: absolute;
+    left: 30vw;
+    transform: translate(-50%, -50%);
+    top: 50%;
+}
+i{
+    margin: 1rem;
+}
+i:hover{
+    cursor: pointer;
+}
+#arrDown{
+    transform: rotateZ(180deg);
+}
+  
+  
+
+/* #titulos::-webkit-scrollbar{
+    width: 0;
+} */

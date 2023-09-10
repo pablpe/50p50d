@@ -1,4 +1,6 @@
-
+:root{
+    --transitionD : 2s;
+}
 body{
     background-color: black;
     width: 100vw;
@@ -28,4 +30,20 @@ body::-webkit-scrollbar{
     background-color: rgba(128, 128, 128, 0.346);
     box-sizing: border-box;
     margin: 2.5px;
+    transition: var(--transitionD) all;
+}
+
+.cuadradito:hover{
+    transition-duration: 0s;
+}
+#segundos{
+    position: absolute;
+    top: 5rem;
+    scale: 3;
+    text-align: center;
+    width: 3rem;
+}
+#segundos::-webkit-inner-spin-button,
+#segundos::-webkit-outer-spin-button{
+    appearance: none;
 }

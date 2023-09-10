@@ -50,6 +50,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: auto;
 }
 .despliegue-menu{
     border-radius: 50px;

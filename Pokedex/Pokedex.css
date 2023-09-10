@@ -68,7 +68,7 @@ nav{
     font-family: 'Rubik';
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: center;
     gap: 0.5rem;
     top: 4rem;
     transition: all 0.1s;
@@ -84,7 +84,7 @@ body::-webkit-scrollbar{
 .card{
     background-color: rgb(189, 232, 182);
     height: 30vh;
-    width: 13vw;
+    width: 12vw;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -94,6 +94,7 @@ body::-webkit-scrollbar{
     box-sizing: border-box;
     padding-bottom: 2rem;
     transition: all 0.3s;
+    box-sizing: border-box;
 }
 .imgCardCont{
     height: 60%;

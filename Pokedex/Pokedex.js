@@ -261,3 +261,11 @@ function getMoves(data){
     })
     return content
 }
+
+let formatbtn = document.getElementById("format");
+formatbtn.addEventListener("click", ()=>{
+    container.classList.toggle("list");
+    cards.forEach((card) =>{
+        card.classList.toggle("list");
+    })
+})

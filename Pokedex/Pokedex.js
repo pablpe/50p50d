@@ -81,7 +81,7 @@ async function getData(num){
 async function newCard(num){
     let data = await getData(num);
     let element = `<div class="card" style="background-color: ${colors[data.types[0].type.name]}; box-shadow: 0 0 100px ${colors[data.types[0].type.name]};"
-                        data-gen= "${getGen(num)}" data-type= "${data.types[0].type.name}">
+                        data-gen= "${getGen(num)}" data-type= "${data.types[0].type.name}" data-genvisible= "1" data-typevisible= "1">
                         <div class="imgCardCont" style="border: solid 3px ${darkerColors[data.types[0].type.name]};">
                             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${num}.png" alt="">
                         </div>
@@ -105,8 +105,8 @@ async function addCards(nums){
     for (let i = 1; i <= nums; i++) {
         let divAct = document.createElement("div")
         divAct.innerHTML = await newCard(i)
-        divAct.addEventListener("mouseenter", ()=>{divAct.querySelector("img").style.scale = 2;})
-        divAct.addEventListener("mouseleave", ()=>{divAct.querySelector("img").style.scale = 1.7;})
+        divAct.addEventListener("mouseenter", ()=>{divAct.querySelector("img").style.scale = 1.6;})
+        divAct.addEventListener("mouseleave", ()=>{divAct.querySelector("img").style.scale = 1.1;})
         container.appendChild(divAct)
     }
     cards = container.querySelectorAll(".card")
@@ -118,51 +118,101 @@ let search = document.getElementById("search");
 search.addEventListener("input", () => {
     let str = search.value.toLowerCase(); // Convierte la entrada de búsqueda a minúsculas
     cards.forEach((card) => {
-        let nbrAct = card.querySelector(".pokemonNameCard").textContent.toLowerCase(); // Convierte el contenido de texto a minúsculas
-        if (!nbrAct.includes(str)) {
-            card.style.display = "none";
-        } else {
-            card.style.display = "flex";
+        
+        if (card.getAttribute("data-genvisible") == 1 && card.getAttribute("data-typevisible") == 1) {
+            let nbrAct = card.querySelector(".pokemonNameCard").textContent.toLowerCase(); // Convierte el contenido de texto a minúsculas
+            if (!nbrAct.includes(str)) {
+                card.style.display = "none";
+            } else {
+                card.style.display = "flex";
+            }
         }
     });
 });
 
 //Menu
+//Label for li
+document.addEventListener("click",(event)=>{
+    if (event.target.tagName === "LI") {
+        let val = event.target.querySelector("input").checked;
+        val == true? event.target.querySelector("input").checked = false : event.target.querySelector("input").checked = true
+        event.target.querySelector("input").dispatchEvent(new Event("input"))
+    }
+})
 //Generation selection
-let gensCheckbx = document.getElementById("gensCheckbx")
-let arrCheckbox = gensCheckbx.querySelectorAll("input")
+// Generation selection
+let gensCheckbx = document.getElementById("gensCheckbx");
+let arrCheckbox = gensCheckbx.querySelectorAll("input");
+
+function updateVisibility() {
+    arrCheckbox.forEach((checkbox, index) => {
+        let inp = index + 1;
+        cards.forEach((card) => {
+            if (card.getAttribute("data-gen") == inp) {
+                if (checkbox.checked) {
+                    card.setAttribute("data-genvisible", "1");
+                    if (card.getAttribute("data-typevisible") == 1){
+                        card.style.display = "flex";
+                        search.value = "";
+                    }
+                } else {
+                    card.setAttribute("data-genvisible", "0");
+                    card.style.display = "none";
+                    search.value = "";
+                }
+            }
+        });
+    });
+}
+
 arrCheckbox.forEach((checkbox, index) => {
     checkbox.addEventListener("input", () => {
-        if (index == 8) {
+        if (index === 8) {
             arrCheckbox.forEach((chx, i) => {
-                if (i != 8) {
-                    if (checkbox.checked) {
-                        chx.checked = true;
-                        changeVisibilityGen(chx,i)
-                    } else {
-                        chx.checked = false;
-                        changeVisibilityGen(chx,i)
-                    }
+                if (i !== 8) {
+                    chx.checked = checkbox.checked;
                 }
             });
-        } else {
-            changeVisibilityGen(checkbox, index)
         }
+        updateVisibility();
     });
 });
-function changeVisibilityGen(checkbox, index){
-    let inp = index + 1;
-            if (checkbox.checked) {
-                cards.forEach((card) => {
-                    if (card.getAttribute("data-gen") == inp) {
+document.addEventListener("DOMContentLoaded", updateVisibility)
+
+//Type Selection
+let typesCheckbx = document.getElementById("typesCheckbx");
+let arrTypesCheckbox = typesCheckbx.querySelectorAll("input");
+
+arrTypesCheckbox.forEach((checkbox, index) => {
+    checkbox.addEventListener("input", () => {
+        if (index === 20) {
+            arrTypesCheckbox.forEach((chx, i) => {
+                if (i !== 20) {
+                    chx.checked = checkbox.checked;
+                }
+            });
+        }
+        updateTypeVisibility();
+    });
+});
+
+function updateTypeVisibility() {
+    arrTypesCheckbox.forEach((checkbox) => {
+        let typ = checkbox.parentElement.textContent.trim();
+        cards.forEach((card) => {
+            if (card.getAttribute("data-type") === typ) {
+                if (checkbox.checked) {
+                    card.setAttribute("data-typevisible", "1");
+                    if (card.getAttribute("data-genvisible") == 1){
                         card.style.display = "flex";
+                        search.value = "";
                     }
-                });
-            } else {
-                cards.forEach((card) => {
-                    if (card.getAttribute("data-gen") == inp) {
-                        card.style.display = "none";
-                    }
-                });
+                } else {
+                    card.setAttribute("data-typevisible", "0");
+                    card.style.display = "none";
+                    search.value = "";
+                }
             }
+        });
+    });
 }

@@ -58,9 +58,26 @@ nav{
     flex-direction: column;
     align-items: center;
     border-right: 2px solid grey;
+    overflow: auto;
 }
 #menu *{
     transition: opacity 0s;
+}
+#menu ul{
+    width: 100%;
+}
+#menu li{
+    font-size: 1.2rem;
+    border-bottom: 2px rgb(169, 169, 79) solid;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+#menu::-webkit-scrollbar{
+    height: 0;
+}
+ul{
+    list-style-type: none;
 }
 #container{
     background-color: black;
@@ -103,7 +120,7 @@ body::-webkit-scrollbar{
 .imgCardCont img{
     height: 100%;
     width: auto;
-    scale: 1.7;
+    scale: 1.1;
     transition: all 0.3s;
 }
 .pokemonNameCard{

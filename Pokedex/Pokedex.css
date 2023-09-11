@@ -126,3 +126,64 @@ body::-webkit-scrollbar{
 .pokemonNameCard{
     font-size: 1.5rem;
 }
+
+/* big card */
+
+#bigCard{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 150;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+#bigCard > *{
+    position: relative;
+    height: 60%;
+}
+#bigCardCont{
+    position: relative;
+    background-color: rgb(84, 69, 71);
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+}
+#movesContainer{
+    position: relative;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: solid grey 1.5px;
+}
+#titleMoves{
+    background-color: violet;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+#moves{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 10rem;
+    overflow: auto;
+    position: relative;
+    box-shadow: 0 0 10px grey;
+}
+.move{
+    position: relative;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    border-bottom: solid grey 1.5px;
+}

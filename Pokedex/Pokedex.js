@@ -45,6 +45,7 @@
 
 
 const srcImgs = "https://pokeres.bastionbot.org/images/pokemon/"; //n.png
+let body = document.querySelector("body");
 let container = document.getElementById("container");
 let btnMenu = document.getElementById("btnMenu");
 let menu = document.getElementById("menu")
@@ -138,6 +139,8 @@ document.addEventListener("click",(event)=>{
         val == true? event.target.querySelector("input").checked = false : event.target.querySelector("input").checked = true
         event.target.querySelector("input").dispatchEvent(new Event("input"))
     }
+    let card = event.target.closest(".card");
+    if (card) addBigCard(card.querySelector(".pokemonNbrCard").textContent.slice(1))
 })
 //Generation selection
 // Generation selection
@@ -215,4 +218,46 @@ function updateTypeVisibility() {
             }
         });
     });
+}
+
+//big card
+// cards.forEach(card =>{
+//     card.addEventListener("click", addBigCard(card.querySelector(".pokemonNbrCard").textContent[1]))
+// })
+
+async function addBigCard(num){
+    let data = await getData(num);
+    let cardAct = `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${num}.png" alt=""
+                            id="imgBigCard">
+                        <div id="bigCardCont" style="background-color: ${colors[data.types[0].type.name]}; box-shadow: 0 0 100px ${colors[data.types[0].type.name]};">
+                            <h1 style= "font-size: 4rem">${data.forms[0].name}</h1>
+                            <div>#${num}</div>
+                            <div>Type : ${data.types[0].type.name}</div>
+                            <div id="movesContainer">
+                                <div id="titleMoves">Moves</div>
+                                <div id="moves">
+                                    ${getMoves(data.moves)}
+                                </div>
+                            </div>
+                        </div>`;
+    let divAct = document.createElement("div")
+    divAct.id = "bigCard"
+    divAct.innerHTML = cardAct;
+    body.append(divAct)
+}
+document.addEventListener("click", function(event) {
+    var bigCard = document.getElementById("bigCard");
+    var bigCardCont = document.getElementById("bigCardCont");
+
+    if (bigCard && !bigCardCont.contains(event.target)) {
+        bigCard.remove();
+    }
+});
+
+function getMoves(data){
+    let content = "";
+    data.forEach((movement) =>{
+        content += `<div class="move">${movement.move.name}</div>`;
+    })
+    return content
 }

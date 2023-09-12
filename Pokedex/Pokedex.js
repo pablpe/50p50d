@@ -50,6 +50,7 @@ let container = document.getElementById("container");
 let btnMenu = document.getElementById("btnMenu");
 let menu = document.getElementById("menu")
 let menuThings = menu.querySelectorAll("*");
+let loadingScreen = document.getElementById("loadingScreen");
 let menuActive = false
 let cards
 menuThings.forEach((thing)=>{
@@ -112,6 +113,11 @@ async function addCards(nums){
         container.appendChild(divAct)
     }
     cards = container.querySelectorAll(".card")
+    let pokemonNames = []
+    cards.forEach(card =>{pokemonNames.push(card.querySelector(".pokemonNameCard").textContent)})
+    localStorage.setItem("pokemonNames", JSON.stringify(pokemonNames))
+    updateLocalStorage()
+    loadingScreen.remove()
 }
 addCards(905)
 
@@ -157,6 +163,7 @@ document.addEventListener("click",(event)=>{
                     }
                 })
             }
+            localStorage.setItem("actualTeam", JSON.stringify(actualTeam))
         }
     }else{
         if (card) addBigCard(card.querySelector(".pokemonNbrCard").textContent.slice(1))
@@ -200,7 +207,7 @@ arrCheckbox.forEach((checkbox, index) => {
         updateVisibility();
     });
 });
-document.addEventListener("DOMContentLoaded", updateVisibility)
+//document.addEventListener("DOMContentLoaded", updateVisibility)
 
 //Type Selection
 let typesCheckbx = document.getElementById("typesCheckbx");
@@ -251,7 +258,6 @@ function getTypes(data){
 }
 async function addBigCard(num){
     let data = await getData(num);
-    statsTypes(data);
     // let cardAct = `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${num}.png" alt=""
     //                         id="imgBigCard">
     //                     <div id="bigCardCont" style="background-color: ${colors[data.types[0].type.name]}; box-shadow: 0 0 100px ${colors[data.types[0].type.name]};">
@@ -295,33 +301,6 @@ async function addBigCard(num){
     divAct.innerHTML = cardAct;
     body.append(divAct)
 }
-async function statsTypes(data){
-    let typesAct = [];
-    let doubleDamageFrom = []
-    let doubleDamageTo = []
-    let halfDamageFrom = []
-    let halfDamageTo = []
-    let noDamageFrom = []
-    let noDamageTo = []
-    data.types.forEach(type => typesAct.push(type.type.name))
-    typesAct.forEach(async function(type){
-        let res = await fetch(`https://pokeapi.co/api/v2/type/${type}`)
-        let data = await res.json()
-        data = data.damage_relations
-        data.double_damage_from.forEach(type => { if (!doubleDamageFrom.includes(type.name)) doubleDamageFrom.push(type.name) });
-        data.double_damage_to.forEach(type => { if (!doubleDamageTo.includes(type.name)) doubleDamageTo.push(type.name) });
-        data.half_damage_from.forEach(type => { if (!halfDamageFrom.includes(type.name)) halfDamageFrom.push(type.name) });
-        data.half_damage_to.forEach(type => { if (!halfDamageTo.includes(type.name)) halfDamageTo.push(type.name) });
-        data.no_damage_from.forEach(type => { if (!noDamageFrom.includes(type.name)) noDamageFrom.push(type.name) });
-        data.no_damage_to.forEach(type => { if (!noDamageTo.includes(type.name)) noDamageTo.push(type.name) });
-})
-    console.log("doubleDamageFrom:", doubleDamageFrom);
-    console.log("doubleDamageTo:", doubleDamageTo);
-    console.log("halfDamageFrom:", halfDamageFrom);
-    console.log("halfDamageTo:", halfDamageTo);
-    console.log("noDamageFrom:", noDamageFrom);
-    console.log("noDamageTo:", noDamageTo);
-}
 document.addEventListener("click", function(event) {
     var bigCard = document.getElementById("bigCard");
     var bigCardCont = document.getElementById("bigCardCont");
@@ -352,7 +331,23 @@ formatbtn.addEventListener("click", ()=>{
 //TEAM IN HOMESCREEN
 let btnDeck = document.getElementById("btnDeck")
 let teamMenu = document.getElementById("teamMenu")
-let actualTeam = [];
+
+//localstorage team
+let actualTeam = JSON.parse(localStorage.getItem("actualTeam"));
+
+function updateLocalStorage(){
+    actualTeam.forEach(pokemon => {
+        addMiniCard(pokemon)
+    })
+        cards.forEach(card =>{
+            actualTeam.forEach(pokemon => {
+                if (card.querySelector(".pokemonNbrCard").textContent.slice(1) == pokemon) {
+                    card.querySelector("I").classList.toggle("fa-regular")
+                    card.querySelector("I").classList.toggle("fa-solid")
+                }
+            })
+        })
+}
 
 btnDeck.addEventListener("click", ()=>{
     btnDeck.classList.toggle("active")
@@ -371,6 +366,7 @@ teamMenu.addEventListener("click", (event)=>{
                     card.querySelector("I").classList.toggle("fa-solid")
                 }
             })
+            localStorage.setItem("actualTeam", JSON.stringify(actualTeam))
         }
     }
 })
@@ -379,7 +375,7 @@ async function addMiniCard(name) {
     let data = await getData(name)
     let minicardCont = `<div class="miniCard" data-number="${data.id}">
                             <i class="fa-solid fa-xmark" style="color: #f70202;"></i>
-                            <h2>${data.forms[0].name}</h2>
+                            <h2 style= "font-size : 1.2rem">${data.forms[0].name}</h2>
                             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png" alt="">
                         </div>`;
     teamMenu.innerHTML += minicardCont;

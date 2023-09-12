@@ -16,6 +16,18 @@ nav{
     background-color: rgb(0, 0, 0);
     border-bottom: 2px solid grey;
 }
+#loadingScreen{
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(41,116,145,255);
+    background-image: url(https://24.media.tumblr.com/0c09085ef1bde2e7bcf88ef72ced6566/tumblr_mkud0j9DVw1r67h3uo1_500.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+}
 #btnMenu{
     background-color: transparent;
     border: 0;
@@ -236,7 +248,7 @@ body::-webkit-scrollbar{
 #format{
     position: absolute;
     height: 50%;
-    width: 5rem;
+    width: 7rem;
     right: 0;
     top: 50%;
     transform: translateY(-50%);

@@ -83,7 +83,7 @@ async function newCard(num){
     let data = await getData(num);
     let element = `<div class="card" style="background-color: ${colors[data.types[0].type.name]}; box-shadow: 0 0 100px ${colors[data.types[0].type.name]};"
                         data-gen= "${getGen(num)}" data-type= "${data.types[0].type.name}" data-genvisible= "1" data-typevisible= "1">
-                        <div class="imgCardCont" style="border: solid 3px ${darkerColors[data.types[0].type.name]};">
+                        <div class="imgCardCont" style="border: solid 3px ${darkerColors[data.types[0].type.name]}; background-color: ${darkerColors[data.types[0].type.name]};">
                             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${num}.png" alt="">
                         </div>
                         <div class="pokemonNbrCard">#${num}</div>
@@ -227,6 +227,7 @@ function updateTypeVisibility() {
 
 async function addBigCard(num){
     let data = await getData(num);
+    statsTypes(data);
     let cardAct = `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${num}.png" alt=""
                             id="imgBigCard">
                         <div id="bigCardCont" style="background-color: ${colors[data.types[0].type.name]}; box-shadow: 0 0 100px ${colors[data.types[0].type.name]};">
@@ -244,6 +245,33 @@ async function addBigCard(num){
     divAct.id = "bigCard"
     divAct.innerHTML = cardAct;
     body.append(divAct)
+}
+async function statsTypes(data){
+    let typesAct = [];
+    let doubleDamageFrom = []
+    let doubleDamageTo = []
+    let halfDamageFrom = []
+    let halfDamageTo = []
+    let noDamageFrom = []
+    let noDamageTo = []
+    data.types.forEach(type => typesAct.push(type.type.name))
+    typesAct.forEach(async function(type){
+        let res = await fetch(`https://pokeapi.co/api/v2/type/${type}`)
+        let data = await res.json()
+        data = data.damage_relations
+        data.double_damage_from.forEach(type => doubleDamageFrom.push(type.name))
+        data.double_damage_to.forEach(type => doubleDamageTo.push(type.name))
+        data.half_damage_from.forEach(type => halfDamageFrom.push(type.name))
+        data.half_damage_to.forEach(type => halfDamageTo.push(type.name))
+        data.no_damage_from.forEach(type => noDamageFrom.push(type.name))
+        data.no_damage_to.forEach(type => noDamageTo.push(type.name))
+    })
+    console.log("doubleDamageFrom:", doubleDamageFrom);
+    console.log("doubleDamageTo:", doubleDamageTo);
+    console.log("halfDamageFrom:", halfDamageFrom);
+    console.log("halfDamageTo:", halfDamageTo);
+    console.log("noDamageFrom:", noDamageFrom);
+    console.log("noDamageTo:", noDamageTo);
 }
 document.addEventListener("click", function(event) {
     var bigCard = document.getElementById("bigCard");

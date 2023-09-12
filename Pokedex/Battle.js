@@ -42,17 +42,56 @@ var colors = {
     "unknown": "rgb(70, 70, 70)",
     "shadow": "rgb(40, 40, 40)"
 };
+let myPokemons = document.getElementById("myPokemons")
+let team = JSON.parse(localStorage.getItem("actualTeam"))
+let myCurrentPokemon = document.getElementById("myCurrentPokemon")
+let miniCards
+addMyPokemons(team)
 
-
-
-
-
-async function getData(num){
-    let res = await fetch(`https://pokeapi.co/api/v2/pokemon/${num}`)
-    let data = await res.json()
-    return data;
+//ADD MYPOKEMONS
+async function addMyPokemons(team) {
+    await Promise.all(team.map(async function(pokemon) {
+        let data = await getData(pokemon);
+        let content = `<div class="miniCard" style="background-color: ${colors[data.types[0].type.name]};" data-number= ${pokemon}>
+                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon}.png" style="scale: 1.4; transform: translateY(-20%);">
+                            <div id="typesMC">${divsTypes(data)}</div>
+                            <h3>${data.forms[0].name}</h3>
+                        </div>`;
+        myPokemons.innerHTML += content;
+    }));
+    onChargeActions();
 }
-async function statsTypes(data){
+
+// Resto del código...
+
+function divsTypes(data){
+    let content = "";
+    data.types.forEach(t =>{
+        content += `<div style="background-color: ${darkerColors[t.type.name]}; color: ${colors[t.type.name]}; padding: 3px 6px; width: fit-content; border-radius: 20px;">
+                        ${t.type.name}
+                    </div>`
+    })
+    return content
+}
+function onChargeActions(){
+    miniCards = document.querySelectorAll(".miniCard")
+    miniCards.forEach(card =>{
+        card.addEventListener("mouseenter", ()=>{
+            card.style.boxShadow = `0 0 10px ${window.getComputedStyle(card).backgroundColor}`
+        })
+        card.addEventListener("mouseleave", ()=>{
+            card.style.boxShadow = ""
+        })
+        card.addEventListener("click", ()=>{updateCurrent(card.getAttribute("data-number"))})
+    })
+}
+//ADD MYPOKEMONS
+//ADD CURRENT POKEMON
+async function updateCurrent(num){
+    myCurrentPokemon.innerHTML = "";
+    console.log(num);
+    let data = await getData(num);
+
     let typesAct = [];
     let doubleDamageFrom = []
     let doubleDamageTo = []
@@ -60,22 +99,104 @@ async function statsTypes(data){
     let halfDamageTo = []
     let noDamageFrom = []
     let noDamageTo = []
-    data.types.forEach(type => typesAct.push(type.type.name))
-    typesAct.forEach(async function(type){
-        let res = await fetch(`https://pokeapi.co/api/v2/type/${type}`)
-        let data = await res.json()
-        data = data.damage_relations
+
+    data.types.forEach(type => typesAct.push(type.type.name));
+
+    const typePromises = typesAct.map(async function(type) {
+        let res = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
+        let data = await res.json();
+        data = data.damage_relations;
         data.double_damage_from.forEach(type => { if (!doubleDamageFrom.includes(type.name)) doubleDamageFrom.push(type.name) });
         data.double_damage_to.forEach(type => { if (!doubleDamageTo.includes(type.name)) doubleDamageTo.push(type.name) });
         data.half_damage_from.forEach(type => { if (!halfDamageFrom.includes(type.name)) halfDamageFrom.push(type.name) });
         data.half_damage_to.forEach(type => { if (!halfDamageTo.includes(type.name)) halfDamageTo.push(type.name) });
         data.no_damage_from.forEach(type => { if (!noDamageFrom.includes(type.name)) noDamageFrom.push(type.name) });
         data.no_damage_to.forEach(type => { if (!noDamageTo.includes(type.name)) noDamageTo.push(type.name) });
-})
-    console.log("doubleDamageFrom:", doubleDamageFrom);
-    console.log("doubleDamageTo:", doubleDamageTo);
-    console.log("halfDamageFrom:", halfDamageFrom);
-    console.log("halfDamageTo:", halfDamageTo);
-    console.log("noDamageFrom:", noDamageFrom);
-    console.log("noDamageTo:", noDamageTo);
+    });
+    await Promise.all(typePromises);
+    myCurrentPokemon.innerHTML = `<div class="myCurrPkmn" style="background-color: ${colors[data.types[0].type.name]};">
+                                        <div id="name">${data.forms[0].name}</div>
+                                        <div id="imgNTypes">
+                                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${num}.png" alt="">
+                                            <div id="typesMC">${divsTypes(data)}</div>
+                                        </div>
+                                        <div id="typeStats">
+                                            <div class="statContainer">
+                                                <div style="display: flex; align-items: center; justify-content: center; height: 10%; background-color: violet; font-size: 0.8rem;
+                                                    padding: 0.2rem; box-sizing: border-box; text-align: center;">
+                                                    Double damage from
+                                                </div>
+                                                <div class="stat">${getstatTypes(doubleDamageFrom)}</div>
+                                            </div>
+                                            <div class="statContainer">
+                                                <div style="display: flex; align-items: center; justify-content: center; height: 10%; background-color: violet; font-size: 0.8rem;
+                                                    padding: 0.2rem; box-sizing: border-box; text-align: center;">
+                                                    Double damage to
+                                                </div>
+                                                <div class="stat">${getstatTypes(doubleDamageTo)}</div>
+                                            </div>
+                                            <div class="statContainer">
+                                                <div style="display: flex; align-items: center; justify-content: center; height: 10%; background-color: violet; font-size: 0.8rem;
+                                                    padding: 0.2rem; box-sizing: border-box; text-align: center;">
+                                                    Half damage from
+                                                </div>
+                                                <div class="stat">${getstatTypes(halfDamageFrom)}</div>
+                                            </div>
+                                            <div class="statContainer">
+                                                <div style="display: flex; align-items: center; justify-content: center; height: 10%; background-color: violet; font-size: 0.8rem;
+                                                    padding: 0.2rem; box-sizing: border-box; text-align: center;">
+                                                    Half damage to
+                                                </div>
+                                                <div class="stat">${getstatTypes(halfDamageTo)}</div>
+                                            </div>
+                                            <div class="statContainer">
+                                                <div style="display: flex; align-items: center; justify-content: center; height: 10%; background-color: violet; font-size: 0.8rem;
+                                                    padding: 0.2rem; box-sizing: border-box; text-align: center;">
+                                                    No damage from
+                                                </div>
+                                                <div class="stat">${getstatTypes(noDamageFrom)}</div>
+                                            </div>
+                                            <div class="statContainer">
+                                                <div style="display: flex; align-items: center; justify-content: center; height: 10%; background-color: violet; font-size: 0.8rem;
+                                                    padding: 0.2rem; box-sizing: border-box; text-align: center;">
+                                                    No damage to
+                                                </div>
+                                                <div class="stat">${getstatTypes(noDamageTo)}</div>
+                                            </div>
+                                        </div>
+                                    </div>`;
 }
+function getstatTypes(arr){
+    let cont = ""
+    arr.forEach(elm =>{
+        cont += `<div class="statType">${elm}</div>`
+    })
+    return cont
+}
+//ADD CURRENT POKEMON
+async function getData(num){
+    let res = await fetch(`https://pokeapi.co/api/v2/pokemon/${num}`)
+    let data = await res.json()
+    return data;
+}
+// async function statsTypes(data){
+//     let typesAct = [];
+//     let doubleDamageFrom = []
+//     let doubleDamageTo = []
+//     let halfDamageFrom = []
+//     let halfDamageTo = []
+//     let noDamageFrom = []
+//     let noDamageTo = []
+//     data.types.forEach(type => typesAct.push(type.type.name))
+//     typesAct.forEach(async function(type){
+//         let res = await fetch(`https://pokeapi.co/api/v2/type/${type}`)
+//         let data = await res.json()
+//         data = data.damage_relations
+//         data.double_damage_from.forEach(type => { if (!doubleDamageFrom.includes(type.name)) doubleDamageFrom.push(type.name) });
+//         data.double_damage_to.forEach(type => { if (!doubleDamageTo.includes(type.name)) doubleDamageTo.push(type.name) });
+//         data.half_damage_from.forEach(type => { if (!halfDamageFrom.includes(type.name)) halfDamageFrom.push(type.name) });
+//         data.half_damage_to.forEach(type => { if (!halfDamageTo.includes(type.name)) halfDamageTo.push(type.name) });
+//         data.no_damage_from.forEach(type => { if (!noDamageFrom.includes(type.name)) noDamageFrom.push(type.name) });
+//         data.no_damage_to.forEach(type => { if (!noDamageTo.includes(type.name)) noDamageTo.push(type.name) });
+//     })
+// }

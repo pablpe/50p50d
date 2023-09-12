@@ -1,0 +1,111 @@
+@import url(https://db.onlinewebfonts.com/c/4c19fc875e7ba1e6831129de3ab5ac0b?family=Retro+Gaming);
+
+
+body{
+    background-color: black;
+    font-family: 'Retro Gaming';
+}
+#container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80vw;
+    height: 80vh;
+    transform: translate(-50%,-50%);
+    /* border: 2px solid white; */
+    display: flex;
+}
+#myPokemons{
+    box-sizing: border-box;
+    /* border-right: solid 2px white; */
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+#myCurrentPokemon{
+    box-sizing: border-box;
+    /* border-right: solid 2px white; */
+    height: 100%;
+    width: 37.5%;
+}
+
+#opponent{
+    box-sizing: border-box;
+    height: 100%;
+    width: 37.5%;
+}
+.miniCard{
+    width: calc(100% / 2 - 1rem);
+    height: calc(100% / 3 - 1rem);
+    background-color: pink;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+.miniCard:hover{
+    cursor: pointer;
+}
+#typesMC{
+    display: flex;
+    gap: 0.2rem;
+}
+.myCurrPkmn{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#imgNTypes{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 10rem;
+}
+#imgNTypes img{
+    height: 100%;
+}
+.myCurrPkmn #name{
+    text-align: center;
+    margin: 0;
+    font-size: 3rem;
+}
+#typeStats{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 0.5rem;
+}
+.statContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% / 3 - 0.5rem);
+    height: calc(100% / 2 - 1rem);
+}
+.statContainer > *{
+    width: 100%;
+}
+.stat{
+    background-color: white;
+    height: fit-content;
+    overflow: auto;
+}
+.statType{
+    height: 2rem;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

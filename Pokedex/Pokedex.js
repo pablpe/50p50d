@@ -281,7 +281,7 @@ async function addBigCard(num){
                                 <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${num}.png" alt=""
                                     style="background-color: ${darkerColors[data.types[0].type.name]};">
                                 <div id="bcNum">#${num}</div>
-                                <h1 id="bcName" style="margin: 0; font-size: 3rem;">${data.forms[0].name}</h1>
+                                <h1 id="bcName" style="margin: 0; font-size: 2.7rem;">${data.forms[0].name}</h1>
                             </div>
                             <div id="bcInfoNMoves">
                                 <h2>Profile</h2>

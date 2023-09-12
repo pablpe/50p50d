@@ -338,6 +338,12 @@ teamMenu.addEventListener("click", (event)=>{
             let number = event.target.closest(".miniCard").getAttribute("data-number")
             event.target.closest(".miniCard").remove()
             actualTeam = actualTeam.filter(act => {return act !== number})
+            cards.forEach(card => { 
+                if (card.querySelector(".pokemonNbrCard").textContent.slice(1) == number) {
+                    card.querySelector("I").classList.toggle("fa-regular")
+                    card.querySelector("I").classList.toggle("fa-solid")
+                }
+            })
         }
     }
 })

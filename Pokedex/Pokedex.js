@@ -88,6 +88,7 @@ async function newCard(num){
                         </div>
                         <div class="pokemonNbrCard">#${num}</div>
                         <div class="pokemonNameCard">${data.forms[0].name}</div>
+                        <i class="fa-regular fa-heart"></i>
                     </div>`;
     return element
 }
@@ -140,7 +141,16 @@ document.addEventListener("click",(event)=>{
         event.target.querySelector("input").dispatchEvent(new Event("input"))
     }
     let card = event.target.closest(".card");
-    if (card) addBigCard(card.querySelector(".pokemonNbrCard").textContent.slice(1))
+    if (event.target.tagName == "I") {
+        if (actualTeam.length < 6) {
+            event.target.classList.toggle("fa-regular")
+            event.target.classList.toggle("fa-solid")
+            actualTeam.push(card.querySelector(".pokemonNbrCard").textContent.slice(1))
+            console.log(actualTeam);
+        }
+    }else{
+        if (card) addBigCard(card.querySelector(".pokemonNbrCard").textContent.slice(1))
+    }
 })
 //Generation selection
 // Generation selection
@@ -297,3 +307,13 @@ formatbtn.addEventListener("click", ()=>{
         card.classList.toggle("list");
     })
 })
+
+//TEAM IN HOMESCREEN
+let btnDeck = document.getElementById("btnDeck")
+let teamMenu = document.getElementById("teamMenu")
+
+btnDeck.addEventListener("click", ()=>{
+    teamMenu.classList.toggle("active")
+})
+
+let actualTeam = [];

@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Gentium+Plus&family=Inter&family=M+PLUS+1p:wght@300&family=Roboto:wght@100;300&family=Rubik&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Gentium+Plus&family=Inter&family=M+PLUS+1p:wght@300&family=Roboto:wght@100;300&family=Rubik&display=swap'); */
+@import url(https://db.onlinewebfonts.com/c/4c19fc875e7ba1e6831129de3ab5ac0b?family=Retro+Gaming);
+                
 
 body{
     background-color: black;
-    font-family: 'Rubik';
+    font-family: 'Retro Gaming';
 }
 nav{
     position: fixed;
@@ -215,7 +216,7 @@ body::-webkit-scrollbar{
 }
 #moves{
     background-color: rgb(255, 255, 255);
-    width: 40%;
+    width: 60%;
     height: 11rem;
     margin-left: 2rem;
     box-shadow: 0 0 10px grey;

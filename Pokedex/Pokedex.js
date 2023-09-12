@@ -268,7 +268,7 @@ async function addBigCard(num){
     let cardAct = `<div id="bigCardCont" style="background-color: ${colors[data.types[0].type.name]}; box-shadow: 0 0 100px ${colors[data.types[0].type.name]};">
                         <div id="bcHeader">
                             <div id="infoTitle">INFO.</div>
-                            <button id="btnInfoTitle"><i class="fa-solid fa-x" style="color: #e30d0d;"></i></button>
+                            <button id="btnInfoTitle"><i class="fa-solid fa-x closeBc" style="color: #e30d0d;"></i></button>
                         </div>
                         <div id="bcInfoContainer">
                             <div id="bcFotoNInfo">
@@ -325,7 +325,9 @@ async function statsTypes(data){
 document.addEventListener("click", function(event) {
     var bigCard = document.getElementById("bigCard");
     var bigCardCont = document.getElementById("bigCardCont");
-
+    if (event.target.tagName == "I" && event.target.classList.contains("closeBc")) {
+        bigCard.remove();
+    }
     if (bigCard && !bigCardCont.contains(event.target)) {
         bigCard.remove();
     }

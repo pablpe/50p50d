@@ -283,13 +283,13 @@ async function statsTypes(data){
         let res = await fetch(`https://pokeapi.co/api/v2/type/${type}`)
         let data = await res.json()
         data = data.damage_relations
-        data.double_damage_from.forEach(type => doubleDamageFrom.push(type.name))
-        data.double_damage_to.forEach(type => doubleDamageTo.push(type.name))
-        data.half_damage_from.forEach(type => halfDamageFrom.push(type.name))
-        data.half_damage_to.forEach(type => halfDamageTo.push(type.name))
-        data.no_damage_from.forEach(type => noDamageFrom.push(type.name))
-        data.no_damage_to.forEach(type => noDamageTo.push(type.name))
-    })
+        data.double_damage_from.forEach(type => { if (!doubleDamageFrom.includes(type.name)) doubleDamageFrom.push(type.name) });
+        data.double_damage_to.forEach(type => { if (!doubleDamageTo.includes(type.name)) doubleDamageTo.push(type.name) });
+        data.half_damage_from.forEach(type => { if (!halfDamageFrom.includes(type.name)) halfDamageFrom.push(type.name) });
+        data.half_damage_to.forEach(type => { if (!halfDamageTo.includes(type.name)) halfDamageTo.push(type.name) });
+        data.no_damage_from.forEach(type => { if (!noDamageFrom.includes(type.name)) noDamageFrom.push(type.name) });
+        data.no_damage_to.forEach(type => { if (!noDamageTo.includes(type.name)) noDamageTo.push(type.name) });
+})
     console.log("doubleDamageFrom:", doubleDamageFrom);
     console.log("doubleDamageTo:", doubleDamageTo);
     console.log("halfDamageFrom:", halfDamageFrom);

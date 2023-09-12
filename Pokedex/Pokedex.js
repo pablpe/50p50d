@@ -252,19 +252,44 @@ function getTypes(data){
 async function addBigCard(num){
     let data = await getData(num);
     statsTypes(data);
-    let cardAct = `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${num}.png" alt=""
-                            id="imgBigCard">
-                        <div id="bigCardCont" style="background-color: ${colors[data.types[0].type.name]}; box-shadow: 0 0 100px ${colors[data.types[0].type.name]};">
-                            <h1 style= "font-size: 4rem">${data.forms[0].name}</h1>
-                            <div>#${num}</div>
-                            <div>Type/s : ${getTypes(data)}</div>
-                            <div id="movesContainer">
-                                <div id="titleMoves">Moves</div>
+    // let cardAct = `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${num}.png" alt=""
+    //                         id="imgBigCard">
+    //                     <div id="bigCardCont" style="background-color: ${colors[data.types[0].type.name]}; box-shadow: 0 0 100px ${colors[data.types[0].type.name]};">
+    //                         <h1 style= "font-size: 4rem">${data.forms[0].name}</h1>
+    //                         <div>#${num}</div>
+    //                         <div>Type/s : ${getTypes(data)}</div>
+    //                         <div id="movesContainer">
+    //                             <div id="titleMoves">Moves</div>
+    //                             <div id="moves">
+    //                                 ${getMoves(data.moves)}
+    //                             </div>
+    //                         </div>
+    //                     </div>`;
+    let cardAct = `<div id="bigCardCont" style="background-color: ${colors[data.types[0].type.name]}; box-shadow: 0 0 100px ${colors[data.types[0].type.name]};">
+                        <div id="bcHeader">
+                            <div id="infoTitle">INFO.</div>
+                            <button id="btnInfoTitle"><i class="fa-solid fa-x" style="color: #e30d0d;"></i></button>
+                        </div>
+                        <div id="bcInfoContainer">
+                            <div id="bcFotoNInfo">
+                                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${num}.png" alt=""
+                                    style="background-color: ${darkerColors[data.types[0].type.name]};">
+                                <div id="bcNum">#${num}</div>
+                                <h1 id="bcName" style="margin: 0; font-size: 3rem;">${data.forms[0].name}</h1>
+                            </div>
+                            <div id="bcInfoNMoves">
+                                <h2>Profile</h2>
+                                <div id="bcPerfilCont" style="background-color: ${darkerColors[data.types[0].type.name]};">
+                                    <div><strong>Type/s</strong> ${getTypes(data)}</div>
+                                    <div><strong>Generation </strong>${getGen(num)}</div>
+                                </div>
+                                <h2>Movements</h2>
                                 <div id="moves">
                                     ${getMoves(data.moves)}
                                 </div>
                             </div>
-                        </div>`;
+                        </div>
+                    </div>`;
     let divAct = document.createElement("div")
     divAct.id = "bigCard"
     divAct.innerHTML = cardAct;

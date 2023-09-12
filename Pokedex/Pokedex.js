@@ -141,12 +141,22 @@ document.addEventListener("click",(event)=>{
         event.target.querySelector("input").dispatchEvent(new Event("input"))
     }
     let card = event.target.closest(".card");
-    if (event.target.tagName == "I") {
-        if (actualTeam.length < 6) {
+    //favoritos
+    if (event.target.tagName == "I" && event.target.classList.contains("fa-heart")) {
+        if (actualTeam.length < 6 || event.target.classList.contains("fa-solid")) {
             event.target.classList.toggle("fa-regular")
             event.target.classList.toggle("fa-solid")
-            actualTeam.push(card.querySelector(".pokemonNbrCard").textContent.slice(1))
-            console.log(actualTeam);
+            if (event.target.classList.contains("fa-solid")) {
+                actualTeam.push(card.querySelector(".pokemonNbrCard").textContent.slice(1))
+                addMiniCard(actualTeam[actualTeam.length - 1]);
+            }else{
+                actualTeam = actualTeam.filter(act => {return act !== card.querySelector(".pokemonNbrCard").textContent.slice(1)})
+                teamMenu.querySelectorAll(".miniCard").forEach(miniCard => {
+                    if (miniCard.getAttribute("data-number") == card.querySelector(".pokemonNbrCard").textContent.slice(1)) {
+                        miniCard.remove()
+                    }
+                })
+            }
         }
     }else{
         if (card) addBigCard(card.querySelector(".pokemonNbrCard").textContent.slice(1))
@@ -234,7 +244,11 @@ function updateTypeVisibility() {
 // cards.forEach(card =>{
 //     card.addEventListener("click", addBigCard(card.querySelector(".pokemonNbrCard").textContent[1]))
 // })
-
+function getTypes(data){
+    let typs = []
+    data.types.forEach(type => typs.push(type.type.name))
+    return typs
+}
 async function addBigCard(num){
     let data = await getData(num);
     statsTypes(data);
@@ -243,7 +257,7 @@ async function addBigCard(num){
                         <div id="bigCardCont" style="background-color: ${colors[data.types[0].type.name]}; box-shadow: 0 0 100px ${colors[data.types[0].type.name]};">
                             <h1 style= "font-size: 4rem">${data.forms[0].name}</h1>
                             <div>#${num}</div>
-                            <div>Type : ${data.types[0].type.name}</div>
+                            <div>Type/s : ${getTypes(data)}</div>
                             <div id="movesContainer">
                                 <div id="titleMoves">Moves</div>
                                 <div id="moves">
@@ -311,9 +325,29 @@ formatbtn.addEventListener("click", ()=>{
 //TEAM IN HOMESCREEN
 let btnDeck = document.getElementById("btnDeck")
 let teamMenu = document.getElementById("teamMenu")
+let actualTeam = [];
 
 btnDeck.addEventListener("click", ()=>{
+    btnDeck.classList.toggle("active")
     teamMenu.classList.toggle("active")
 })
 
-let actualTeam = [];
+teamMenu.addEventListener("click", (event)=>{
+    if (window.getComputedStyle(teamMenu).display == "flex") {
+        if (event.target.tagName == "I") {
+            let number = event.target.closest(".miniCard").getAttribute("data-number")
+            event.target.closest(".miniCard").remove()
+            actualTeam = actualTeam.filter(act => {return act !== number})
+        }
+    }
+})
+
+async function addMiniCard(name) {
+    let data = await getData(name)
+    let minicardCont = `<div class="miniCard" data-number="${data.id}">
+                            <i class="fa-solid fa-xmark" style="color: #f70202;"></i>
+                            <h2>${data.forms[0].name}</h2>
+                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png" alt="">
+                        </div>`;
+    teamMenu.innerHTML += minicardCont;
+}

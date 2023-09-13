@@ -116,8 +116,8 @@ async function addCards(nums){
     let pokemonNames = []
     cards.forEach(card =>{pokemonNames.push(card.querySelector(".pokemonNameCard").textContent)})
     localStorage.setItem("pokemonNames", JSON.stringify(pokemonNames))
-    updateLocalStorage()
     loadingScreen.remove()
+    updateLocalStorage()
 }
 addCards(905)
 

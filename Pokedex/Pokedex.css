@@ -38,6 +38,18 @@ nav{
     width: 3.5rem;
     left: 2rem;
 }
+#battleButton{
+    height: 3.5rem;
+    width: 3.5rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20vw;
+    border-radius: 50%;
+    background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2ec970f4-1706-4915-9a93-41f3d9c8202c/dehetv9-efad5ead-a1c7-4ef7-94d4-0c758e7eddb9.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJlYzk3MGY0LTE3MDYtNDkxNS05YTkzLTQxZjNkOWM4MjAyY1wvZGVoZXR2OS1lZmFkNWVhZC1hMWM3LTRlZjctOTRkNC0wYzc1OGU3ZWRkYjkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.0QmcHDQ3cnXw7IEIRDrSGpOCb2657FSs0bOQWL0XM34);
+    background-size: cover;
+    background-position: center;
+}
 #btnMenu i{
     scale: 3;
 }
@@ -210,6 +222,7 @@ body::-webkit-scrollbar{
     padding: 1rem;
     padding-bottom: 0;
     border-right: 1.5px solid black;
+    height: 100%;
 }
 #bcFotoNInfo img{
     height: 20vh;
@@ -220,6 +233,7 @@ body::-webkit-scrollbar{
     padding: 0.5rem;
     width: 100%;
     padding-bottom: 0;
+    height: 100%;
 }
 #bcPerfilCont{
     width: calc(100% - 4rem);

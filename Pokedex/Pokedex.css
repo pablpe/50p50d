@@ -245,7 +245,7 @@ body::-webkit-scrollbar{
 #moves{
     background-color: rgb(255, 255, 255);
     width: 60%;
-    height: 11rem;
+    height: 8rem;
     margin-left: 2rem;
     box-shadow: 0 0 10px grey;
     overflow: auto;

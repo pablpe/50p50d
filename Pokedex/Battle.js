@@ -82,14 +82,13 @@ function onChargeActions(){
         card.addEventListener("mouseleave", ()=>{
             card.style.boxShadow = ""
         })
-        card.addEventListener("click", ()=>{updateCurrent(card.getAttribute("data-number"))})
+        card.addEventListener("click", ()=>{updateCurrent(card.getAttribute("data-number"), myCurrentPokemon)})
     })
 }
 //ADD MYPOKEMONS
 //ADD CURRENT POKEMON
-async function updateCurrent(num){
-    myCurrentPokemon.innerHTML = "";
-    console.log(num);
+async function updateCurrent(num, container){
+    container.innerHTML = "";
     let data = await getData(num);
 
     let typesAct = [];
@@ -114,10 +113,10 @@ async function updateCurrent(num){
         data.no_damage_to.forEach(type => { if (!noDamageTo.includes(type.name)) noDamageTo.push(type.name) });
     });
     await Promise.all(typePromises);
-    myCurrentPokemon.innerHTML = `<div class="myCurrPkmn" style="background-color: ${colors[data.types[0].type.name]};">
+    container.innerHTML = `<div class="myCurrPkmn" style="background-color: ${colors[data.types[0].type.name]};">
                                         <div id="name">${data.forms[0].name}</div>
                                         <div id="imgNTypes">
-                                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${num}.png" alt="">
+                                            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png" alt="">
                                             <div id="typesMC">${divsTypes(data)}</div>
                                         </div>
                                         <div id="typeStats">
@@ -200,3 +199,27 @@ async function getData(num){
 //         data.no_damage_to.forEach(type => { if (!noDamageTo.includes(type.name)) noDamageTo.push(type.name) });
 //     })
 // }
+//SEARCH
+let search = document.getElementById("search")
+let results = document.getElementById("results")
+let pokemonNames = JSON.parse(localStorage.getItem("pokemonNames"))
+let opponent = document.getElementById("opponent")
+
+document.addEventListener("click", (event)=>{
+    if(event.target == search) results.classList.remove("hidden")
+    else results.classList.add("hidden")
+})
+search.addEventListener("input", ()=>{
+    results.innerHTML = "";
+    pokemonNames.forEach(name =>{
+        if (name.includes(search.value)) {
+            results.innerHTML += `<div class="result">${name}</div>`;
+        }
+    })
+})
+document.addEventListener("click", (event)=>{
+    if (event.target.classList.contains("result")) {
+        updateCurrent(event.target.textContent, opponent)
+    }
+});
+//SEARCH

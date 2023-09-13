@@ -164,11 +164,14 @@ async function updateCurrent(num, container){
                                             </div>
                                         </div>
                                     </div>`;
+    let elms0 = document.querySelectorAll(".statType")
+    elms0.forEach(nod =>{nod.style.color = "black"})
+    highlightWords(document.querySelectorAll(".myCurrPkmn"))
 }
 function getstatTypes(arr){
     let cont = ""
     arr.forEach(elm =>{
-        cont += `<div class="statType">${elm}</div>`
+        cont += `<div class="statType">${elm} </div>`
     })
     return cont
 }
@@ -223,3 +226,33 @@ document.addEventListener("click", (event)=>{
     }
 });
 //SEARCH
+async function highlightWords(elements){
+    let name0 = elements[0].querySelector("#name").textContent;
+    let data0 = await getData(name0)
+    let types = getTypes(data0)
+    let elms1 = elements[1].querySelectorAll(".statType")
+    elms1.forEach(nod =>{
+        types.forEach(type =>{
+            if (nod.textContent.includes(type)) {
+                nod.style.color = "red"
+            }
+        })
+    })
+
+    let name1 = elements[1].querySelector("#name").textContent;
+    let data1 = await getData(name1)
+    types = getTypes(data1)
+    let elms0 = elements[0].querySelectorAll(".statType")
+    elms0.forEach(nod =>{
+        types.forEach(type =>{
+            if (nod.textContent.includes(type)) {
+                nod.style.color = "red"
+            }
+        })
+    })
+}
+function getTypes(data){
+    let typs = []
+    data.types.forEach(type => typs.push(type.type.name))
+    return typs
+}

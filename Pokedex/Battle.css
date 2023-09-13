@@ -150,11 +150,12 @@ body{
 .stat{
     background-color: white;
     height: fit-content;
+    max-height: 15rem;
     overflow: auto;
 }
 .statType{
     height: 2rem;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;

@@ -51,10 +51,15 @@ let btnMenu = document.getElementById("btnMenu");
 let menu = document.getElementById("menu")
 let menuThings = menu.querySelectorAll("*");
 let loadingScreen = document.getElementById("loadingScreen");
+let battleButton = document.getElementById("battleButton")
 let menuActive = false
 let cards
 menuThings.forEach((thing)=>{
     thing.style.opacity = 0;
+})
+
+battleButton.addEventListener("click", ()=>{
+    window.location.href = 'Battle.html';
 })
 btnMenu.addEventListener("click", ()=>{
     if (menuActive) {
@@ -334,19 +339,25 @@ let teamMenu = document.getElementById("teamMenu")
 
 //localstorage team
 let actualTeam = JSON.parse(localStorage.getItem("actualTeam"));
+if (actualTeam == null) {
+    actualTeam = []
+}
 
 function updateLocalStorage(){
-    actualTeam.forEach(pokemon => {
-        addMiniCard(pokemon)
-    })
-        cards.forEach(card =>{
-            actualTeam.forEach(pokemon => {
-                if (card.querySelector(".pokemonNbrCard").textContent.slice(1) == pokemon) {
-                    card.querySelector("I").classList.toggle("fa-regular")
-                    card.querySelector("I").classList.toggle("fa-solid")
-                }
-            })
+
+    if (actualTeam) {
+        actualTeam.forEach(pokemon => {
+            addMiniCard(pokemon)
         })
+            cards.forEach(card =>{
+                actualTeam.forEach(pokemon => {
+                    if (card.querySelector(".pokemonNbrCard").textContent.slice(1) == pokemon) {
+                        card.querySelector("I").classList.toggle("fa-regular")
+                        card.querySelector("I").classList.toggle("fa-solid")
+                    }
+                })
+            })
+    }
 }
 
 btnDeck.addEventListener("click", ()=>{
